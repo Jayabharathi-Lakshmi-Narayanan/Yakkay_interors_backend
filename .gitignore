@@ -1,0 +1,6 @@
+node_modules
+.env
+auth.config.js
+congig.js
+db.config.js
+domain.conf.jsapp/passport/passportsetup.js
