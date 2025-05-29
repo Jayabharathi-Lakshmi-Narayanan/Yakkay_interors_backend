@@ -25,6 +25,8 @@ try {
   db.userinfo = require("../modules/authentication/user/models/userinfo.model.js")(sequelize, Sequelize);
   db.form = require("../modules/form/models/form.model.js")(sequelize, Sequelize);
   db.get_quote_form = require("../modules/form/models/get_quote_form.model.js")(sequelize, Sequelize);
+  db.notify = require("../modules/form/models/notify.model.js")(sequelize, Sequelize);
+
 } catch (error) {
   console.error("Error importing models:", error);
 }
@@ -34,6 +36,7 @@ try {
 // User and UserInfo association
 db.user.hasOne(db.userinfo, { foreignKey: "userId", as: "userInfo" });
 db.userinfo.belongsTo(db.user, { foreignKey: "userId", as: "user" });
+
 
 // Export db object
 module.exports = db;

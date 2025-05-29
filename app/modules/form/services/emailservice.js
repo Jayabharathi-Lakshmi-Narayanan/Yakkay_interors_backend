@@ -4,8 +4,10 @@ const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        pass: process.env.EMAIL_PASS, // Use App Password if 2FA enabled
     },
+    logger: true,
+    debug: true,
 });
 
 /**
@@ -13,6 +15,7 @@ const transporter = nodemailer.createTransport({
  * @param {Object} form - The submitted form data.
  */
 exports.sendAcknowledgmentEmail = async (form) => {
+
     const { name, email, phone, service, message } = form;
 
     const mailOptions = {
@@ -34,8 +37,14 @@ Message: ${message}
 
 Warm regards,  
 Yakkay Interiors Team
-    `,
+        `,
     };
 
-    await transporter.sendMail(mailOptions);
+    try {
+        let info = await transporter.sendMail(mailOptions);
+        console.log("Email sent successfully:", info.response);
+    } catch (error) {
+        console.error("Failed to send email:", error);
+        throw error;  // rethrow if you want upstream to handle it
+    }
 };

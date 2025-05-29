@@ -10,7 +10,7 @@ const createForm = async (req, res) => {
         area,
         style,
         service,
-        projectId, // optional
+        projectId,
     } = req.body;
 
     if (!name || !mobile || !email || !location || !area || !style || !service) {

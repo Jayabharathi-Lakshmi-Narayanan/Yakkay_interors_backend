@@ -37,7 +37,7 @@ module.exports = (sequelize, Sequelize) => {
             },
             projectId: {
                 type: Sequelize.INTEGER,
-                allowNull: true, // Optional relationship
+                allowNull: true,
             },
             createdAt: {
                 type: Sequelize.DATE,
@@ -50,12 +50,12 @@ module.exports = (sequelize, Sequelize) => {
         },
         {
             hooks: {
-                beforeCreate: (form, options) => {
+                beforeCreate: (form) => {
                     const currentIST = moment().tz("Asia/Kolkata").toDate();
                     form.createdAt = currentIST;
                     form.updatedAt = currentIST;
                 },
-                beforeUpdate: (form, options) => {
+                beforeUpdate: (form) => {
                     const currentIST = moment().tz("Asia/Kolkata").toDate();
                     form.updatedAt = currentIST;
                 },

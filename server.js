@@ -67,6 +67,8 @@ app.post("/", (req, res) => {
 require("./app/modules/authentication/user/routes/user.routes")(app);
 require("./app/modules/form/routes/form.routes")(app);
 require("./app/modules/form/routes/get_quote_form.routes.js")(app);
+require("./app/modules/form/routes/notify.routes")(app);
+
 require("./app/crons/cron"); // Trigger the cron jobs
 
 // Serve frontend **AFTER** API routes

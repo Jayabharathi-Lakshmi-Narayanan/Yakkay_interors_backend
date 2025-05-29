@@ -1,10 +1,2 @@
 node_modules
 .env
-<<<<<<< HEAD
-.env
-auth.config.js
-congig.js
-db.config.js
-domain.conf.jsapp/passport/passportsetup.js
-=======
->>>>>>> b13b39d (Initial commit for backend project)
